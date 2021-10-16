@@ -1,11 +1,11 @@
 type Match = {
   rating: Number;
-  date: String;
+  date: string;
   year: Number;
-  company: String;
-  event: String;
-  matchType: String;
-  winners: String[];
-  losers: String[];
-  participants: String[];
+  company: string;
+  event: string;
+  matchType: string;
+  winners: string[];
+  losers: string[];
+  participants: string[];
 };
