@@ -29,9 +29,12 @@ const Home: NextPage = () => {
     matches: Match[] | undefined
   ): ColumnFilterItem[] | void {
     if (matches) {
-      const companies = matches.map(({ company }) => company);
+      let companies = matches.map(({ company }) => company);
       const filteredCompanies = removeDuplicates(companies);
-      const structuredCompanies = filteredCompanies.map((filtered) => {
+      const sortedCompanies = filteredCompanies.sort((a, b) =>
+        a.localeCompare(b)
+      );
+      const structuredCompanies = sortedCompanies.map((filtered) => {
         return { value: filtered, text: filtered };
       });
       setCompanies(structuredCompanies);
@@ -47,6 +50,7 @@ const Home: NextPage = () => {
         ({ participants }) => (allWrestlers = allWrestlers.concat(participants))
       );
       allWrestlers = removeDuplicates(allWrestlers);
+      allWrestlers = allWrestlers.sort((a, b) => a.localeCompare(b));
       allWrestlers = allWrestlers.map((wrestler: string) => ({
         text: wrestler,
         value: wrestler,
@@ -77,6 +81,7 @@ const Home: NextPage = () => {
       key: "company",
       dataIndex: "company",
       filters: companies,
+      filterSearch: true,
       onFilter: (value, record) => record.company.includes(value.toString()),
     },
     { title: "Event", key: "event", dataIndex: "event" },
@@ -88,6 +93,7 @@ const Home: NextPage = () => {
       render: (items: String[]) =>
         items.map((item, i) => <Tag key={i}>{item}</Tag>),
       filters: wrestlers,
+      filterSearch: true,
       onFilter: (value, record) =>
         record.participants.includes(value.toString()),
     },
