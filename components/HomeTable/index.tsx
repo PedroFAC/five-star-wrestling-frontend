@@ -2,6 +2,7 @@ import { Table, Tag } from "antd";
 import { ColumnFilterItem, ColumnsType } from "antd/lib/table/interface";
 import { useEffect, useState } from "react";
 import classes from "../../styles/HomeTable.module.css";
+import Link from "next/link";
 
 const HomeTable = ({
   dataSource,
@@ -92,7 +93,16 @@ const HomeTable = ({
       key: "participants",
       dataIndex: "participants",
       render: (items: String[]) =>
-        items.map((item, i) => <Tag key={i}>{item}</Tag>),
+        items.map((item, i) => (
+          <Link
+            href={{
+              pathname: "wrestlers",
+              query: { wrestler: item.toString() },
+            }}
+          >
+            <Tag key={i}>{item}</Tag>
+          </Link>
+        )),
       filters: wrestlers,
       filterSearch: true,
       onFilter: (value, record) =>
@@ -103,14 +113,32 @@ const HomeTable = ({
       key: "winners",
       dataIndex: "winners",
       render: (items: String[]) =>
-        items.map((item, i) => <Tag key={i}>{item}</Tag>),
+        items.map((item, i) => (
+          <Link
+            href={{
+              pathname: "wrestlers",
+              query: { wrestler: item.toString() },
+            }}
+          >
+            <Tag key={i}>{item}</Tag>
+          </Link>
+        )),
     },
     {
       title: "Losers",
       key: "losers",
       dataIndex: "losers",
       render: (items: String[]) =>
-        items.map((item, i) => <Tag key={i}>{item}</Tag>),
+        items.map((item, i) => (
+          <Link
+            href={{
+              pathname: "wrestlers",
+              query: { wrestler: item.toString() },
+            }}
+          >
+            <Tag key={i}>{item}</Tag>
+          </Link>
+        )),
     },
     { title: "Match Type", key: "matchType", dataIndex: "matchType" },
   ];
