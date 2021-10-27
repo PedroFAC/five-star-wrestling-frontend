@@ -3,6 +3,7 @@ import { Content, Footer, Header } from "antd/lib/layout/layout";
 import { ReactElement } from "react";
 import { Typography } from "antd";
 import classes from "../../styles/PagesLayout.module.css";
+import LayoutFooter from "../LayoutFooter";
 const { Title } = Typography;
 
 export default function PagesLayout({ children }: { children: ReactElement }) {
@@ -12,7 +13,7 @@ export default function PagesLayout({ children }: { children: ReactElement }) {
         <Title className={classes.title}>5-star rated matches</Title>
       </Header>
       <Content className={classes.content}>{children}</Content>
-      <Footer>By PedroFAC</Footer>
+      <LayoutFooter />
     </Layout>
   );
 }

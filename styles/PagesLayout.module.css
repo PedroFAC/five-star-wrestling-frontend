@@ -11,3 +11,13 @@
   background: white;
   padding: 16px;
 }
+
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+}
+@media (max-width: 600px) {
+  .footer {
+    flex-direction: column;
+  }
+}
