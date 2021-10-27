@@ -1,10 +1,12 @@
-import { Breadcrumb, Space, Switch } from "antd";
+import { Breadcrumb, Space, Switch, Typography } from "antd";
 import { useRouter } from "next/dist/client/router";
 import { useQuery } from "react-query";
 import HomeTable from "../../components/HomeTable";
 import { getMatches } from "../api";
 import Link from "next/link";
 import { Fragment, useState } from "react";
+import classes from "../../styles/Home.module.css";
+const { Text } = Typography;
 
 const WrestlerSection = () => {
   const { query } = useRouter();
@@ -14,13 +16,7 @@ const WrestlerSection = () => {
 
   return (
     <Fragment>
-      <Space
-        style={{
-          width: "100%",
-          justifyContent: "space-between",
-          display: "flex",
-        }}
-      >
+      <Space className={classes.switchContainerWrestler}>
         <Breadcrumb>
           <Breadcrumb.Item>
             <Link href="/">Home</Link>
@@ -28,7 +24,10 @@ const WrestlerSection = () => {
           <Breadcrumb.Item>Wrestler</Breadcrumb.Item>
           <Breadcrumb.Item>{query.wrestler}</Breadcrumb.Item>
         </Breadcrumb>
-        <Switch checked={spoilers} onChange={() => setSpoilers(!spoilers)} />
+        <Space direction="horizontal">
+          <Text strong>Show spoilers</Text>
+          <Switch checked={spoilers} onChange={() => setSpoilers(!spoilers)} />
+        </Space>
       </Space>
       <HomeTable
         dataSource={data?.filter((item) => {

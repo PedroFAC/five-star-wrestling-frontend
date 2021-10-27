@@ -1,0 +1,13 @@
+.layout {
+  min-height: 100vh !important;
+}
+
+.title {
+  color: white !important;
+  line-height: unset !important;
+}
+
+.content {
+  background: white;
+  padding: 16px;
+}

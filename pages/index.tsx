@@ -4,6 +4,7 @@ import { Fragment, useState } from "react";
 import { useQuery } from "react-query";
 import HomeTable from "../components/HomeTable";
 import { getMatches } from "./api";
+import classes from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   const { Text } = Typography;
@@ -13,10 +14,7 @@ const Home: NextPage = () => {
 
   return (
     <Fragment>
-      <Space
-        style={{ width: "100%", justifyContent: "flex-end", display: "flex" }}
-        direction="horizontal"
-      >
+      <Space className={classes.switchContainerHome} direction="horizontal">
         <Switch checked={spoilers} onChange={() => setSpoilers(!spoilers)} />
         <Text strong>Show spoilers</Text>
       </Space>
