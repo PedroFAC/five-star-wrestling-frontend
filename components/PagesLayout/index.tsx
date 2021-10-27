@@ -2,18 +2,18 @@ import { Layout } from "antd";
 import { Content, Footer, Header } from "antd/lib/layout/layout";
 import { ReactElement } from "react";
 import { Typography } from "antd";
+import classes from "../../styles/PagesLayout.module.css";
+import LayoutFooter from "../LayoutFooter";
 const { Title } = Typography;
 
 export default function PagesLayout({ children }: { children: ReactElement }) {
   return (
-    <Layout style={{ minHeight: "100vh" }}>
+    <Layout className={classes.layout}>
       <Header>
-        <Title style={{ color: "white" }}>5-star rated matches</Title>
+        <Title className={classes.title}>5-star rated matches</Title>
       </Header>
-      <Content style={{ background: "white", padding: "16px" }}>
-        {children}
-      </Content>
-      <Footer>By PedroFAC</Footer>
+      <Content className={classes.content}>{children}</Content>
+      <LayoutFooter />
     </Layout>
   );
 }
